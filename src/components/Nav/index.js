@@ -15,14 +15,10 @@ function Nav(props) {
     }, [currentCategory]);
 
     return (
-      <header>
+      <header className="flex-row px-1">
         <h2>
             <a data-testid="link" href="/">
-                <span role="img" aria-label="camera">
-                    {''}
-                    📸
-                    </span>{''}
-                    Oh Snap!
+                <span role="img" aria-label="camera">📸</span>Oh Snap!
             </a>
         </h2>
         <nav>
@@ -32,7 +28,7 @@ function Nav(props) {
                         About Me
                     </a>
                 </li>
-                <li>
+                <li className="mx-2">
                     <span>Contact</span>
                 </li>
                 {catagories.map((category) => (

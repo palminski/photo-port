@@ -20,8 +20,8 @@ function App() {
         description: "Photos of food",
     },
     {
-        name: 'dogs',
-        description: "Photos of dogs",
+        name: 'landscape',
+        description: "Wait, these aren't dogs",
     },
     
 ]);
@@ -36,7 +36,7 @@ const [currentCategory, setCurrentCategory] = useState(catagories[0])
       currentCategory={currentCategory}>
       </Nav>
       <main>
-        <Gallery/>
+        <Gallery currentCategory={currentCategory}></Gallery>
         <About />
       </main>
     </div>
