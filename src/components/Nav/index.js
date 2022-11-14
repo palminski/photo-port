@@ -1,37 +1,28 @@
-import React from "react";
-import coverImage from '../../assets/cover/cover-image.jpg';
+import React, {useEffect} from "react";
+// import coverImage from '../../assets/cover/cover-image.jpg';
+import { capitalizeFirstLetter } from "../../utils/helpers";
 
-function Nav() {
+function Nav(props) {
 
-    const catagories = [
-        {
-            name: 'commercial',
-            description: "Photos of grocery stores, food trucks, and other commercial projects",
-        },
-        {
-            name: 'portraits',
-            description: "Photos of ppl in my life",
-        },
-        {
-            name: 'food',
-            description: "Photos of food",
-        },
-        {
-            name: 'dogs',
-            description: "Photos of dogs",
-        },
-        
-    ];
+    const {
+        catagories = [],
+        setCurrentCategory,
+        currentCategory
+    } = props;
 
-    function categorySelected(name) {
-        console.log(name + ' hello world');
-    }
+    useEffect(() => {
+        document.title = capitalizeFirstLetter(currentCategory.name);
+    }, [currentCategory]);
 
     return (
       <header>
         <h2>
             <a data-testid="link" href="/">
-                <span role="img" aria-label="camera">📸</span>Oh Snap!
+                <span role="img" aria-label="camera">
+                    {''}
+                    📸
+                    </span>{''}
+                    Oh Snap!
             </a>
         </h2>
         <nav>
@@ -45,8 +36,8 @@ function Nav() {
                     <span>Contact</span>
                 </li>
                 {catagories.map((category) => (
-                    <li className="mx-1" key={category.name}>
-                        <span onClick={() => categorySelected(category.name)}>{category.name}</span>
+                    <li className={`mx-1 ${currentCategory.name === category.name && 'navActive'}`} key={category.name}>
+                        <span onClick={() => {setCurrentCategory(category)}}>{capitalizeFirstLetter(category.name)}</span>
                     </li>
                 ))}
             </ul>
